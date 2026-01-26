@@ -1,16 +1,30 @@
 # POKEDEX_POO
 ## ENTIDADES
 * POKEMON\
-Atributos:\
-nombre, tipo, puntos de vida y ataques
+**Atributos:**\
+- nombre 
+- tipo 
+- puntos de vida 
+- ataques
+**Acciones**
+- Atacar
+- recibir daño
+- evolucionar
+- esquivar
 
 * ATAQUE
-Atributos:\
-nombre
-Vida que quita
+**Atributos:**\
+- nombre
+- Vida que quita
 
 * TIPO
-Nombre
-Estatura
-Velocidad
-Defensa
+**Atributos:**\
+- Nombre
+- Estatura
+- Velocidad
+- Defensa
+
+* COMBATE
+**Atributos:**\
+- Pokemon 1
+- Pokemon 2
