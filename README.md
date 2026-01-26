@@ -1,1 +1,4 @@
-# pokedex_POO
+# POKEDEX_POO
+## ENTIDADES
+* POKEMON
+ 
