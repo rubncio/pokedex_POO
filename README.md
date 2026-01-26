@@ -5,4 +5,6 @@ Atributos:
 tipos, puntos de vida y ataques
 
 * ATAQUES
+Atributos:
+Vida que quita
 
