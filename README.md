@@ -1,11 +1,11 @@
 # POKEDEX_POO
 ## ENTIDADES
 * POKEMON
-Atributos: 
+Atributos:\
 nombre, tipos, puntos de vida y ataques
 
 * ATAQUES
-Atributos: 
+Atributos:\
 nombre
 Vida que quita
 
