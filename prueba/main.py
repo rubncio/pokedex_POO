@@ -30,9 +30,9 @@ if __name__=="__main__":
 # - Defensa (Max 18)
 # - Velocidad (Max 100)
 # - movimientos[4] - Solo nombre"""
-    pokemon1=Pokemon(nombre="pikachu", tipo="fuego", nivel=4, vida=150, fuerza=5, defensa=10, velocidad=58, movimientos=[Movimiento("fuego",33),Movimiento("agua",95),Movimiento("naturaleza",41),Movimiento("magia",50)]
+    pokemon1=Pokemon(nombre="pikachu", tipo="fuego", nivel=4, vida=150, fuerza=14, defensa=10, velocidad=58, movimientos=[Movimiento("fuego",33),Movimiento("agua",95),Movimiento("naturaleza",41),Movimiento("magia",50)]
     )
-    pokemon2=Pokemon(nombre="obama", tipo="politico", nivel=6, vida=250, fuerza=15, defensa=13, velocidad=35, movimientos=[Movimiento("economia",100),Movimiento("Igualdad",67),Movimiento("Demagogia",85),Movimiento("Dialogo",47)]
+    pokemon2=Pokemon(nombre="obama", tipo="politico", nivel=6, vida=250, fuerza=17, defensa=13, velocidad=35, movimientos=[Movimiento("Impuestos",100),Movimiento("Igualdad",67),Movimiento("Demagogia",85),Movimiento("Dialogo",47)]
     )
 
     primerAtacante=""
