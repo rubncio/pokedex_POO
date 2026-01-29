@@ -21,6 +21,7 @@
 # recibir_dano()
 # Se resta a la vida actual el daño recibido
 import random
+from exceptions.oponenteVacio import OponenteVacio
 from movimiento import Movimiento
 
 
@@ -37,6 +38,7 @@ class Pokemon:
         self.derrotado=False
     
     def ejecutar_movimiento(self, pokemonOponente):
+        if pokemonOponente==None :raise(OponenteVacio)
         movimiento: Movimiento=random.choice(self.movimientos)
         ataque=self.fuerza*(1+(movimiento.porcentajeDaño/100))
         print(f"{self.nombre}:Lanzo el ataque:{movimiento.nombre} con un daño de {ataque:.0f}")
