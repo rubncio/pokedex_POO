@@ -26,17 +26,27 @@ from movimiento import Movimiento
 
 
 class Pokemon:
-    def __init__(self, nombre, tipo, nivel, vida, fuerza, defensa, velocidad, movimientos: list):
+    __movimientos:list=list()
+    def __init__(self, nombre, tipo, vida, fuerza, defensa, velocidad):
         self.nombre=nombre
         self.tipo=tipo
-        self.nivel=nivel
         self.vida=vida
         self.fuerza=fuerza
         self.defensa=defensa
         self.velocidad=velocidad
-        self.movimientos=movimientos
         self.derrotado=False
     
+    def setMovimiento(self, movimiento:Movimiento):
+        if len(self.__movimientos)>=4:
+            raise IndexError("Solo se permiten hasta 4 movimientos")
+        if self.tipo!=movimiento.tipo:
+            raise TypeError("tipo de movimiento no permitido para este pokemon")
+        self.__movimientos.append(movimiento)
+        
+
+    def getMovimientos(self)->Movimiento:
+        return self.__movimientos
+
     def ejecutar_movimiento(self, pokemonOponente):
         if pokemonOponente==None :raise(OponenteVacio)
         movimiento: Movimiento=random.choice(self.movimientos)
@@ -46,7 +56,7 @@ class Pokemon:
 
         pokemonOponente.recibirdaño(dañoAtaque)
 
-    def recibirdaño(self, dañoAtaque):
+    def recibirdano(self, dañoAtaque):
         self.vida-=dañoAtaque
         if(self.vida<=0):
             print(f"{self.nombre}: He caido")
