@@ -29,6 +29,6 @@ def setMovimientoMasDeCuatro():
     pokemon.setMovimiento(movimientoAgua)
     pokemon.setMovimiento(movimientoAgua)
     pokemon.setMovimiento(movimientoAgua)
-    with pytest.raises(TypeError):
+    with pytest.raises(IndexError):
         pokemon.setMovimiento(movimientoAgua)
     
