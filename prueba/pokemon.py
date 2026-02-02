@@ -27,7 +27,7 @@ from movimiento import Movimiento
 
 class Pokemon:
     __movimientos:list=list()
-    def __init__(self, nombre, tipo, vida, fuerza, defensa, velocidad):
+    def __init__(self, nombre, tipo, vida, fuerza, defensa, velocidad, movimientos):
         self.nombre=nombre
         self.tipo=tipo
         self.vida=vida
@@ -35,6 +35,7 @@ class Pokemon:
         self.defensa=defensa
         self.velocidad=velocidad
         self.derrotado=False
+        self.__movimientos=movimientos
     
     def setMovimiento(self, movimiento:Movimiento):
         if len(self.__movimientos)>=4:
@@ -42,6 +43,28 @@ class Pokemon:
         if self.tipo!=movimiento.tipo:
             raise TypeError("tipo de movimiento no permitido para este pokemon")
         self.__movimientos.append(movimiento)
+
+    @__movimientos.setter
+    def movimientos(self, movimiento):
+        if type(movimiento)==movimiento:
+            if len(self.__movimientos)<4:
+                self.__movimientos.append(movimiento)
+            else:
+                raise IndexError("Este pokemon ya tiene 4 movimientos")
+
+        elif type(movimiento)==list:
+            if len(movimiento)!=4:
+                assert IndexError("Solo se permiten 4 movimientos")
+            else:
+                if all(self.tipo == mov.tipo for mov in movimiento):
+                    self.__movimientos=movimiento
+                else:
+                    raise TypeError("tipo/s de movimiento no permitido para este pokemon")
+        elif type(movimiento)==tuple:
+            nuevoM=movimiento[0]
+            reempM=movimiento[1]
+            self.__movimientos.remove(reempM)
+            self.__movimientos.append(nuevoM)
         
 
     def getMovimientos(self)->Movimiento:

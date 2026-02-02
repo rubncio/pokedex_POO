@@ -10,11 +10,12 @@ def ejecutarMovimientoOponenteVacio():
         pokemon.ejecutar_movimiento()
 
 def setMovimientoIncompatible():
-    pokemon=Pokemon(nombre="pikachu", tipo="fuego", vida=150, fuerza=14, defensa=10, velocidad=58)
     movimientoAgua=Movimiento("chorro", 95, "agua")
+    pokemon=Pokemon(nombre="pikachu", tipo="fuego", vida=150, fuerza=14, defensa=10, velocidad=58, movimientos=[movimientoAgua, movimientoAgua, movimientoAgua, movimientoAgua])
+    
     with pytest.raises(TypeError):
         
-        pokemon.setMovimiento(movimientoAgua)
+        pokemon.movimientos=movimientoAgua
 
 def setMovimientoCompatible():
     pokemon=Pokemon(nombre="pikachu", tipo="fuego", vida=150, fuerza=14, defensa=10, velocidad=58)
@@ -22,13 +23,17 @@ def setMovimientoCompatible():
     pokemon.setMovimiento(movimientoFuego)
     assert len(pokemon.getMovimientos()) == 1
 
-def setMovimientoMasDeCuatro():
-    pokemon=Pokemon(nombre="pikachu", tipo="agua", vida=150, fuerza=14, defensa=10, velocidad=58)
+def setMovimientoMasDeCuatroError():
     movimientoAgua=Movimiento("chorro", 95, "agua")
-    pokemon.setMovimiento(movimientoAgua)
-    pokemon.setMovimiento(movimientoAgua)
-    pokemon.setMovimiento(movimientoAgua)
-    pokemon.setMovimiento(movimientoAgua)
-    with pytest.raises(IndexError):
-        pokemon.setMovimiento(movimientoAgua)
+    pokemon=Pokemon(nombre="pikachu", tipo="agua", vida=150, fuerza=14, defensa=10, velocidad=58, movimientos=[movimientoAgua, movimientoAgua, movimientoAgua, movimientoAgua])
     
+    with pytest.raises(IndexError):
+        pokemon.movimientos=movimientoAgua
+    
+def setMovimientoMasDeCuatroBien():
+    movimientoFuego=Movimiento("llamarada", 95, "fuego")
+    movimientoAgua=Movimiento("chorro", 95, "agua")
+    pokemon=Pokemon(nombre="pikachu", tipo="fuego", vida=150, fuerza=14, defensa=10, velocidad=58, movimientos=[movimientoFuego, movimientoFuego, movimientoFuego, movimientoFuego])
+    
+    pokemon.movimientos=(movimientoAgua, movimientoFuego)
+    assert movimientoAgua in pokemon.movimientos
