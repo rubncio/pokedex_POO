@@ -27,7 +27,7 @@ from movimiento import Movimiento
 
 class Pokemon:
     __movimientos:list=list()
-    def __init__(self, nombre, tipo, vida, fuerza, defensa, velocidad, movimientos):
+    def __init__(self, nombre, tipo, vida, fuerza, defensa, velocidad):
         self.nombre=nombre
         self.tipo=tipo
         self.vida=vida
@@ -35,24 +35,33 @@ class Pokemon:
         self.defensa=defensa
         self.velocidad=velocidad
         self.derrotado=False
-        self.__movimientos=movimientos
     
-    def setMovimiento(self, movimiento:Movimiento):
+    """def setMovimiento(self, movimiento:Movimiento):
         if len(self.__movimientos)>=4:
             raise IndexError("Solo se permiten hasta 4 movimientos")
         if self.tipo!=movimiento.tipo:
             raise TypeError("tipo de movimiento no permitido para este pokemon")
-        self.__movimientos.append(movimiento)
+        self.__movimientos.append(movimiento)"""
+    @property
+    def movimientos(self):
+        return self.__movimientos.copy()
 
     @__movimientos.setter
     def movimientos(self, movimiento):
         if type(movimiento)==movimiento:
+            #En caso de que se indique como valor para el setter un objeto de movimiento
             if len(self.__movimientos)<4:
-                self.__movimientos.append(movimiento)
+                if self.tipo == movimiento.tipo:
+                    self.__movimientos.append(movimiento)
+                else:
+                    raise TypeError("tipo/s de movimiento no permitido para este pokemon")
+                
             else:
                 raise IndexError("Este pokemon ya tiene 4 movimientos")
 
         elif type(movimiento)==list:
+            #En caso de que se indique como valor para el setter un list de objetos de movimiento
+            #Si se indica una lista tiene que ser 4 movimientos 
             if len(movimiento)!=4:
                 assert IndexError("Solo se permiten 4 movimientos")
             else:
@@ -61,10 +70,17 @@ class Pokemon:
                 else:
                     raise TypeError("tipo/s de movimiento no permitido para este pokemon")
         elif type(movimiento)==tuple:
+            #En caso de que se indique como valor para el setter una tupla en elq ue se indique el movimiento y el indice a sustituir.
             nuevoM=movimiento[0]
-            reempM=movimiento[1]
-            self.__movimientos.remove(reempM)
-            self.__movimientos.append(nuevoM)
+            indice=movimiento[1]
+            if indice <1 or indice >4:
+                raise TypeError("indice a reemplazar tiene que ser entre 1 a 4")
+            if self.tipo == nuevoM.tipo:
+                self.__movimientos.pop(indice)
+                self.__movimientos.append(nuevoM)
+            else:
+                raise TypeError("tipo/s de movimiento no permitido para este pokemon")
+            
         
 
     def getMovimientos(self)->Movimiento:
@@ -77,7 +93,7 @@ class Pokemon:
         print(f"{self.nombre}:Lanzo el ataque:{movimiento.nombre} con un daño de {ataque:.0f}")
         dañoAtaque=ataque-pokemonOponente.defensa
 
-        pokemonOponente.recibirdaño(dañoAtaque)
+        pokemonOponente.recibirdano(dañoAtaque)
 
     def recibirdano(self, dañoAtaque):
         self.vida-=dañoAtaque

@@ -30,10 +30,47 @@ def setMovimientoMasDeCuatroError():
     with pytest.raises(IndexError):
         pokemon.movimientos=movimientoAgua
     
-def setMovimientoMasDeCuatroBien():
+def setMovimientosustituyendobien():
+    movimientoFuego=Movimiento("llamarada", 95, "fuego")
+    movimientoquemar=Movimiento("achicharramiento", 95, "fuego")
+    pokemon=Pokemon(nombre="pikachu", tipo="fuego", vida=150, fuerza=14, defensa=10, velocidad=58, movimientos=[movimientoFuego, movimientoFuego, movimientoFuego, movimientoFuego])
+    
+    pokemon.movimientos=(movimientoquemar, 1)
+    assert pokemon.movimientos[0]==movimientoquemar
+
+def setMovimientosustituyendoerror():
     movimientoFuego=Movimiento("llamarada", 95, "fuego")
     movimientoAgua=Movimiento("chorro", 95, "agua")
     pokemon=Pokemon(nombre="pikachu", tipo="fuego", vida=150, fuerza=14, defensa=10, velocidad=58, movimientos=[movimientoFuego, movimientoFuego, movimientoFuego, movimientoFuego])
     
-    pokemon.movimientos=(movimientoAgua, movimientoFuego)
-    assert movimientoAgua in pokemon.movimientos
+    with pytest.raises(TypeError):
+        pokemon.movimientos=(movimientoAgua, movimientoFuego)
+
+def setMovimientolistadoMovimientosBien():
+    movimientoFuego=Movimiento("llamarada", 95, "fuego")
+    movimientoquemar=Movimiento("achicharramiento", 95, "fuego")
+    pokemon=Pokemon(nombre="pikachu", tipo="fuego", vida=150, fuerza=14, defensa=10, velocidad=58)
+    pokemon.movimientos=[movimientoFuego, movimientoquemar, movimientoFuego, movimientoquemar]
+    assert pokemon.movimientos.count(movimientoFuego)==2 and pokemon.movimientos.count(movimientoquemar)==2
+
+def setMovimientolistadoMovimientosTipoIncompatibleError():
+    movimientoFuego=Movimiento("llamarada", 95, "fuego")
+    movimientoAgua=Movimiento("chorro", 95, "agua")
+    pokemon=Pokemon(nombre="pikachu", tipo="fuego", vida=150, fuerza=14, defensa=10, velocidad=58)
+    with pytest.raises(TypeError):
+        pokemon.movimientos=[movimientoFuego, movimientoAgua, movimientoFuego, movimientoAgua]
+
+def setMovimientolistadoMovimientosTresError():
+    movimientoFuego=Movimiento("llamarada", 95, "fuego")
+    movimientoAgua=Movimiento("chorro", 95, "agua")
+    pokemon=Pokemon(nombre="pikachu", tipo="fuego", vida=150, fuerza=14, defensa=10, velocidad=58)
+    with pytest.raises(IndexError):
+        pokemon.movimientos=[movimientoFuego, movimientoAgua, movimientoFuego]
+        
+def setMovimientolistadoMovimientosCincoError():
+    movimientoFuego=Movimiento("llamarada", 95, "fuego")
+    movimientoAgua=Movimiento("chorro", 95, "agua")
+    pokemon=Pokemon(nombre="pikachu", tipo="fuego", vida=150, fuerza=14, defensa=10, velocidad=58)
+    with pytest.raises(IndexError):
+        pokemon.movimientos=[movimientoFuego, movimientoAgua, movimientoFuego, movimientoAgua, movimientoAgua]
+    
