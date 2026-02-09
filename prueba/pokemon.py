@@ -1,39 +1,12 @@
-# Clase pokemon
-
-## Atributos
-# - Nombre
-# - Tipo
-# - Nivel
-# - Vida (Inicial 100-300)
-# - Fuerza (Maz 20)
-# - Defensa (Max 18)
-# - Velocidad (Max 100)
-# - movimientos[4] - Solo nombre
-
-## Metodos
-# ejecutar_movimiento(self, otro_pokemon) 
-# Se decide aleatoriamente entre los 4 movimientos disponibles en el pokemon
-# Lanza este movimiento
-# se calcula el daño y se ejecuta la funciñon recibir dano del otro pokemon
-# daño = self.ataque - otro_pokemon.defensa
-
-
-# recibir_dano()
-# Se resta a la vida actual el daño recibido
-import random
-from exceptions.oponenteVacio import OponenteVacio
-from movimiento import Movimiento
-
-
-class Pokemon:
+class Pokemon():
     __movimientos:list=list()
-    def __init__(self, nombre, tipo, vida, fuerza, defensa, velocidad):
+    def __init__(self, nombre, vida, fuerza, defensa, velocidad):
         self.nombre=nombre
-        self.tipo=tipo
         self.vida=vida
         self.fuerza=fuerza
         self.defensa=defensa
         self.velocidad=velocidad
+        self.tipo=list()
         self.derrotado=False
     
     """def setMovimiento(self, movimiento:Movimiento):
@@ -51,7 +24,7 @@ class Pokemon:
         if type(movimiento)==movimiento:
             #En caso de que se indique como valor para el setter un objeto de movimiento
             if len(self.__movimientos)<4:
-                if self.tipo == movimiento.tipo:
+                if movimiento.tipo in self.tipo:
                     self.__movimientos.append(movimiento)
                 else:
                     raise TypeError("tipo/s de movimiento no permitido para este pokemon")
@@ -75,7 +48,7 @@ class Pokemon:
             indice=movimiento[1]
             if indice <1 or indice >4:
                 raise TypeError("indice a reemplazar tiene que ser entre 1 a 4")
-            if self.tipo == nuevoM.tipo:
+            if self().tipo == nuevoM.tipo:
                 self.__movimientos.pop(indice)
                 self.__movimientos.append(nuevoM)
             else:
@@ -83,8 +56,7 @@ class Pokemon:
             
         
 
-    def getMovimientos(self)->Movimiento:
-        return self.__movimientos
+   
 
     def ejecutar_movimiento(self, pokemonOponente):
         if pokemonOponente==None :raise(OponenteVacio)

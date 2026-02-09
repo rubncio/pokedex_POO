@@ -1,5 +1,5 @@
 import random
-from pokemon import Pokemon
+from pikachu import Pikachu 
 from movimiento import Movimiento
 # Script que me va a ejecutar la logica siguiente:
 
@@ -30,9 +30,10 @@ if __name__=="__main__":
 # - Defensa (Max 18)
 # - Velocidad (Max 100)
 # - movimientos[4] - Solo nombre"""
-    pokemon1=Pokemon(nombre="pikachu", tipo="fuego", nivel=4, vida=150, fuerza=14, defensa=10, velocidad=58, movimientos=[Movimiento("fuego",33),Movimiento("agua",95),Movimiento("naturaleza",41),Movimiento("magia",50)]
+    pokemon1=Pikachu(nombre="pikachu", tipo="fuego", nivel=4, vida=150, fuerza=14, defensa=10, velocidad=58
     )
-    pokemon2=Pokemon(nombre="obama", tipo="politico", nivel=6, vida=250, fuerza=17, defensa=13, velocidad=35, movimientos=[Movimiento("Impuestos",100),Movimiento("Igualdad",67),Movimiento("Demagogia",85),Movimiento("Dialogo",47)]
+    print(pokemon1.tipo)
+    """pokemon2=PokemonAgua(nombre="obama", tipo="politico", nivel=6, vida=250, fuerza=17, defensa=13, velocidad=35, movimientos=[Movimiento("Impuestos",100),Movimiento("Igualdad",67),Movimiento("Demagogia",85),Movimiento("Dialogo",47)]
     )
 
     primerAtacante=""
@@ -62,4 +63,4 @@ if __name__=="__main__":
             pokemonGanador=segundoAtacante
             break
         turno+=1
-    print(f"el ganador es {pokemonGanador.nombre}")
+    print(f"el ganador es {pokemonGanador.nombre}")"""

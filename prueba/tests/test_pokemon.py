@@ -1,5 +1,5 @@
 import pytest
-from pokemon import Pokemon
+from prueba.pokemonFuego import Pokemon
 from movimiento import Movimiento
 from exceptions.oponenteVacio import OponenteVacio
 
