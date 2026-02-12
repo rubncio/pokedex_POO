@@ -1,6 +1,6 @@
 from api.schema.pokemon import PokemonModelo
 from pokemon import Pokemon
-from repositories import pokemon_repository
+from repositories.pokemon_repository import *
 def crearPokemon(pokemonModel:PokemonModelo):
     pokemon =Pokemon(pokemonModel.nombre,
         pokemonModel.vida,
@@ -8,5 +8,13 @@ def crearPokemon(pokemonModel:PokemonModelo):
         pokemonModel.defensa,
         pokemonModel.velocidad,
         pokemonModel.tipo)
-    pokemon_repository.guardarPokemon(pokemon)
+    guardarPokemon(pokemon)
+
+def consultarPokemon(nombre):
+    pokemons_dict=obtenerPokemons()
+    pokemon:Pokemon
+    for pokemond in pokemons_dict:
+        if pokemond.get("nombre")==nombre:
+            pokemon=Pokemon.fromDict(pokemond)
+    return pokemon
     

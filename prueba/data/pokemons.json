@@ -6,5 +6,13 @@
         "defensa": "string",
         "velocidad": "string",
         "tipo": "string"
+    },
+    {
+        "nombre": "pikachu",
+        "vida": "string",
+        "fuerza": "string",
+        "defensa": "string",
+        "velocidad": "string",
+        "tipo": "string"
     }
 ]

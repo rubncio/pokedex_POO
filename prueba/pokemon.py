@@ -9,6 +9,18 @@ class Pokemon():
         self.tipo=tipo
         self.derrotado=False
     
+    @staticmethod
+    def fromDict(diccionario:dict):
+        pokemon=Pokemon(
+            diccionario.get("nombre"),
+            diccionario.get("vida"),
+            diccionario.get("fuerza"),
+            diccionario.get("defensa"),
+            diccionario.get("velocidad"),
+            diccionario.get("tipo")
+        )
+        return pokemon
+        
     """def setMovimiento(self, movimiento:Movimiento):
         if len(self.__movimientos)>=4:
             raise IndexError("Solo se permiten hasta 4 movimientos")
