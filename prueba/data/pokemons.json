@@ -1,1 +1,10 @@
-{}
+[
+    {
+        "nombre": "string",
+        "vida": "string",
+        "fuerza": "string",
+        "defensa": "string",
+        "velocidad": "string",
+        "tipo": "string"
+    }
+]

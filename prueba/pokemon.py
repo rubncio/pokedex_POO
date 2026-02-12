@@ -19,7 +19,7 @@ class Pokemon():
     def movimientos(self):
         return self.__movimientos.copy()
 
-    @__movimientos.setter
+    """@__movimientos.setter
     def movimientos(self, movimiento):
         if type(movimiento)==movimiento:
             #En caso de que se indique como valor para el setter un objeto de movimiento
@@ -54,7 +54,7 @@ class Pokemon():
             else:
                 raise TypeError("tipo/s de movimiento no permitido para este pokemon")
             
-        
+        """
 
    
 
@@ -74,3 +74,13 @@ class Pokemon():
             self.derrotado=True
         else:
             print(f"{self.nombre}: Me defiendo y lo resisto")
+
+    def toDict(self)->dict:
+        return{
+            "nombre":self.nombre,
+            "vida":self.vida,
+            "fuerza": self.fuerza,
+            "defensa":self.defensa,
+            "velocidad":self.velocidad,
+            "tipo":self.tipo
+        }

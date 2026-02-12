@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from schema.pokemon import PokemonModelo
+from api.schema.pokemon import PokemonModelo
+from service.pokemon_service import crearPokemon
 app=FastAPI()
 
 @app.get("/pokemon")
@@ -13,5 +14,5 @@ def getPokemon(nombre):
 
 @app.post("/pokemon")
 def createPokemon(pokemon:PokemonModelo):
-    
+    crearPokemon(pokemon)
     return "pokemon creado"
