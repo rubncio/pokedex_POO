@@ -1,12 +1,12 @@
 class Pokemon():
     __movimientos:list=list()
-    def __init__(self, nombre, vida, fuerza, defensa, velocidad):
+    def __init__(self, nombre, vida, fuerza, defensa, velocidad, tipo):
         self.nombre=nombre
         self.vida=vida
         self.fuerza=fuerza
         self.defensa=defensa
         self.velocidad=velocidad
-        self.tipo=list()
+        self.tipo=tipo
         self.derrotado=False
     
     """def setMovimiento(self, movimiento:Movimiento):

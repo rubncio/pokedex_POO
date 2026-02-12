@@ -1,17 +1,17 @@
 from fastapi import FastAPI
-from main import getpokemon
+from schema.pokemon import PokemonModelo
 app=FastAPI()
 
 @app.get("/pokemon")
 def getPokemon():
     
-    return getpokemon()
+    return "lista de pokemon"
 
 @app.get("/pokemon/{nombre}")
-def getPokemon():
-    return "info de pokemon especifico"
+def getPokemon(nombre):
+    return f"info de pokemon {nombre} especifico"
 
 @app.post("/pokemon")
-def createPokemon(pokemon):
+def createPokemon(pokemon:PokemonModelo):
     
     return "pokemon creado"
