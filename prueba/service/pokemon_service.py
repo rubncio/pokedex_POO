@@ -12,7 +12,7 @@ def crearPokemon(pokemonModel:PokemonModelo):
 
 def consultarPokemon(nombre):
     pokemons_dict=obtenerPokemons()
-    pokemon:Pokemon
+    pokemon=None
     for pokemond in pokemons_dict:
         if pokemond.get("nombre")==nombre:
             pokemon=Pokemon.fromDict(pokemond)
