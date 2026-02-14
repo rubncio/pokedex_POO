@@ -1,15 +1,15 @@
-from fastapi import FastAPI
-app=FastAPI()
+from fastapi import APIRouter, FastAPI
+router=APIRouter(prefix="/movimiento", tags="MOVIMIENTO")
 
-@app.get("/movimiento")
+@router.get("/")
 def getMovimiento():
     return "lista de pokemon"
 
-@app.get("/pokemon/{nombre}")
+@router.get("/{nombre}")
 def getMovimiento():
     return "info de movimiento especifico"
 
-@app.post("/movimiento")
+@router.post("/movimiento")
 def createMovimiento(pokemon):
     
     return "movimiento creado"
