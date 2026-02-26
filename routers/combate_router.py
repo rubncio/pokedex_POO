@@ -1,8 +1,8 @@
 from fastapi import APIRouter, FastAPI
-router=APIRouter(prefix="/combate", tags="COMBATE")
+router=APIRouter(prefix="/combates", tags="COMBATE")
 
 
-@router.get("/{combatiente1}{combatiente2}")
-def getPokemon(combatiente1, combatiente2):
+@router.post("/")
+def createCombate(CombateModel):
 
     return "combate entre combatientes {combatiente1}{combatiente2}"

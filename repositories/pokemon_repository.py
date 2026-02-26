@@ -1,5 +1,4 @@
 import json
-from models.pokemon import Pokemon
 
 def guardarPokemon(pokemon:dict):
     #convertir en dict
